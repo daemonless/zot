@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-03T00:40:46Z",
+  "generated": "2026-11-03T10:16:14Z",
   "image": "zot",
   "tags": {
     "latest-aarch64": {
       "app_version": "2.1.23",
       "arch": "aarch64",
-      "generated": "2026-11-03T00:38:40Z",
+      "generated": "2026-11-03T10:14:05Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -252,7 +252,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.131"
+            "version": "3.132"
           },
           {
             "licenses": [
@@ -2680,9 +2680,9 @@
       }
     },
     "pkg-aarch64": {
-      "app_version": "2.1.21_1",
+      "app_version": "2.1.21_2",
       "arch": "aarch64",
-      "generated": "2026-11-03T00:38:44Z",
+      "generated": "2026-11-03T10:14:10Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2929,7 +2929,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.131"
+            "version": "3.132"
           },
           {
             "licenses": [
@@ -2957,7 +2957,7 @@
               "APACHE20"
             ],
             "name": "zot",
-            "version": "2.1.21_1"
+            "version": "2.1.21_2"
           }
         ],
         "go": [
@@ -5314,7 +5314,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.26.9"
+            "version": "v1.26.10"
           },
           {
             "name": "zotregistry.dev/zot/v2",
@@ -5344,9 +5344,9 @@
       }
     },
     "pkg-latest-aarch64": {
-      "app_version": "2.1.22_1",
+      "app_version": "2.1.22_2",
       "arch": "aarch64",
-      "generated": "2026-11-03T00:38:48Z",
+      "generated": "2026-11-03T10:14:14Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -5593,7 +5593,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.131"
+            "version": "3.132"
           },
           {
             "licenses": [
@@ -5621,7 +5621,7 @@
               "APACHE20"
             ],
             "name": "zot",
-            "version": "2.1.22_1"
+            "version": "2.1.22_2"
           }
         ],
         "go": [
@@ -8003,7 +8003,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.27.2"
+            "version": "v1.27.3"
           },
           {
             "name": "zotregistry.dev/zot/v2",
