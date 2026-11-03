@@ -1,0 +1,4 @@
+#!/bin/sh
+# Runs as bsd (base-exec drops privileges); 5000 needs no root.
+export HOME=/config
+exec /usr/local/bin/zot serve /config/config.json 2>&1

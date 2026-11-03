@@ -1,0 +1,42 @@
+ARG BASE_VERSION=15.1
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
+
+ARG FREEBSD_ARCH=amd64
+ARG PKG_NAME="zot"
+ARG PACKAGES="zot ca_root_nss"
+
+LABEL org.opencontainers.image.title="zot" \
+      org.opencontainers.image.description="Production-ready, vendor-neutral OCI image registry with a web UI, image search and vulnerability scanning." \
+      org.opencontainers.image.source="https://github.com/daemonless/zot" \
+      org.opencontainers.image.url="https://zotregistry.dev/" \
+      org.opencontainers.image.documentation="https://zotregistry.dev/latest/" \
+      org.opencontainers.image.licenses="Apache-2.0" \
+      org.opencontainers.image.vendor="daemonless" \
+      org.opencontainers.image.authors="daemonless" \
+      io.daemonless.category="Infrastructure" \
+      io.daemonless.port="5000" \
+      io.daemonless.volumes="/config,/data" \
+      io.daemonless.arch="${FREEBSD_ARCH}" \
+      io.daemonless.pkg-source="pkg" \
+      io.daemonless.packages="${PACKAGES}" \
+      io.daemonless.pkg-name="${PKG_NAME}"
+
+# Install from FreeBSD packages (the port is the full build: UI, search, scrub, metrics)
+RUN pkg update && \
+    pkg install -y ${PACKAGES} && \
+    mkdir -p /app && \
+    pkg query '%v' ${PKG_NAME} > /app/version && \
+    pkg clean -ay && \
+    rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+RUN mkdir -p /config /data && \
+    chown -R bsd:bsd /config /data
+
+COPY root/ /
+RUN chmod +x /daemonless/libexec/zot /daemonless/init.d/* /healthz
+
+CMD ["/daemonless/libexec/zot"]
+
+EXPOSE 5000
+
+VOLUME /config /data

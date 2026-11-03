@@ -1,0 +1,56 @@
+ARG BASE_VERSION=15.1
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
+
+ARG FREEBSD_ARCH=amd64
+ARG PACKAGES="ca_root_nss"
+ARG UPSTREAM_URL="https://api.github.com/repos/project-zot/zot/releases/latest"
+ARG UPSTREAM_JQ=".tag_name"
+
+LABEL org.opencontainers.image.title="zot" \
+      org.opencontainers.image.description="Production-ready, vendor-neutral OCI image registry with a web UI, image search and vulnerability scanning." \
+      org.opencontainers.image.source="https://github.com/daemonless/zot" \
+      org.opencontainers.image.url="https://zotregistry.dev/" \
+      org.opencontainers.image.documentation="https://zotregistry.dev/latest/" \
+      org.opencontainers.image.licenses="Apache-2.0" \
+      org.opencontainers.image.vendor="daemonless" \
+      org.opencontainers.image.authors="daemonless" \
+      io.daemonless.category="Infrastructure" \
+      io.daemonless.port="5000" \
+      io.daemonless.volumes="/config,/data" \
+      io.daemonless.arch="${FREEBSD_ARCH}" \
+      io.daemonless.upstream-url="${UPSTREAM_URL}" \
+      io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
+      io.daemonless.packages="${PACKAGES}"
+
+# ca_root_nss: HTTPS for the release download here and for the CVE database at runtime
+RUN pkg update && \
+    pkg install -y ${PACKAGES} && \
+    pkg clean -ay && \
+    rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+# Official upstream FreeBSD binary (the full build: UI, search, scrub, metrics).
+# The API answer is empty when the shared runner is rate-limited; the releases
+# redirect carries the same tag without the API.
+RUN TAG=$(fetch -qo - "${UPSTREAM_URL}" | jq -r "${UPSTREAM_JQ}" || true) && \
+    if [ -z "$TAG" ] || [ "$TAG" = "null" ]; then \
+        TAG=$(fetch -v -o /dev/null https://github.com/project-zot/zot/releases/latest 2>&1 | sed -n 's|.*/releases/tag/\([^ ]*\).*|\1|p' | head -1); \
+    fi && \
+    [ -n "$TAG" ] || { echo "no release tag found"; exit 1; } && \
+    case "${FREEBSD_ARCH}" in aarch64) ZOT_ARCH=arm64 ;; *) ZOT_ARCH=${FREEBSD_ARCH} ;; esac && \
+    echo "Installing zot ${TAG} (freebsd-${ZOT_ARCH})" && \
+    fetch -qo /usr/local/bin/zot "https://github.com/project-zot/zot/releases/download/${TAG}/zot-freebsd-${ZOT_ARCH}" && \
+    chmod 755 /usr/local/bin/zot && \
+    /usr/local/bin/zot --version && \
+    mkdir -p /app && echo "${TAG#v}" > /app/version
+
+RUN mkdir -p /config /data && \
+    chown -R bsd:bsd /config /data
+
+COPY root/ /
+RUN chmod +x /daemonless/libexec/zot /daemonless/init.d/* /healthz
+
+CMD ["/daemonless/libexec/zot"]
+
+EXPOSE 5000
+
+VOLUME /config /data
