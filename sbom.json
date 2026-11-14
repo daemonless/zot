@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-10T08:07:52Z",
+  "generated": "2026-11-14T22:47:41Z",
   "image": "zot",
   "tags": {
     "latest-amd64": {
       "app_version": "2.1.23",
       "arch": "amd64",
-      "generated": "2026-11-10T08:06:59Z",
+      "generated": "2026-11-14T22:46:56Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2687,7 +2687,7 @@
     "pkg-amd64": {
       "app_version": "2.1.21_2",
       "arch": "amd64",
-      "generated": "2026-11-10T08:07:11Z",
+      "generated": "2026-11-14T22:46:23Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -5349,9 +5349,9 @@
       }
     },
     "pkg-latest-amd64": {
-      "app_version": "2.1.23",
+      "app_version": "2.1.23_1",
       "arch": "amd64",
-      "generated": "2026-11-10T08:07:11Z",
+      "generated": "2026-11-14T22:45:41Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -5626,7 +5626,7 @@
               "APACHE20"
             ],
             "name": "zot",
-            "version": "2.1.23"
+            "version": "2.1.23_1"
           }
         ],
         "go": [
@@ -8013,7 +8013,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.27.3"
+            "version": "v1.27.4"
           },
           {
             "name": "zotregistry.dev/zot/v2",
