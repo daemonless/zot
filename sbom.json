@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T22:47:41Z",
+  "generated": "2026-11-15T19:05:05Z",
   "image": "zot",
   "tags": {
     "latest-amd64": {
@@ -2685,9 +2685,9 @@
       }
     },
     "pkg-amd64": {
-      "app_version": "2.1.21_2",
+      "app_version": "2.1.21_3",
       "arch": "amd64",
-      "generated": "2026-11-14T22:46:23Z",
+      "generated": "2026-11-15T19:04:19Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2955,14 +2955,14 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.8.4"
+            "version": "2.9.2"
           },
           {
             "licenses": [
               "APACHE20"
             ],
             "name": "zot",
-            "version": "2.1.21_2"
+            "version": "2.1.21_3"
           }
         ],
         "go": [
@@ -5319,7 +5319,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.26.10"
+            "version": "v1.26.11"
           },
           {
             "name": "zotregistry.dev/zot/v2",
