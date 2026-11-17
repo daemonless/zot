@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-15T19:41:28Z",
+  "generated": "2026-11-17T09:44:44Z",
   "image": "zot",
   "tags": {
     "latest-aarch64": {
       "app_version": "2.1.23",
       "arch": "aarch64",
-      "generated": "2026-11-15T19:38:40Z",
+      "generated": "2026-11-17T09:42:20Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -273,7 +273,7 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.8.4"
+            "version": "2.9.2"
           }
         ],
         "go": [
@@ -2680,9 +2680,9 @@
       }
     },
     "pkg-aarch64": {
-      "app_version": "2.1.21_2",
+      "app_version": "2.1.21_3",
       "arch": "aarch64",
-      "generated": "2026-11-15T19:38:43Z",
+      "generated": "2026-11-17T09:42:24Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2950,14 +2950,14 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.8.4"
+            "version": "2.9.2"
           },
           {
             "licenses": [
               "APACHE20"
             ],
             "name": "zot",
-            "version": "2.1.21_2"
+            "version": "2.1.21_3"
           }
         ],
         "go": [
@@ -5314,7 +5314,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.26.10"
+            "version": "v1.26.11"
           },
           {
             "name": "zotregistry.dev/zot/v2",
@@ -5346,7 +5346,7 @@
     "pkg-latest-aarch64": {
       "app_version": "2.1.22_2",
       "arch": "aarch64",
-      "generated": "2026-11-15T19:38:45Z",
+      "generated": "2026-11-17T09:42:27Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
